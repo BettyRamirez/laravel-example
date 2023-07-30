@@ -29,20 +29,17 @@ class CourseController extends Controller
     public function store(StoreCourseRequest $request)
     {
 
-        //added in storeCourseRequest in request file
-        // $request->validate([
-        //     'name' => 'required|max:255',
-        //     'description' => 'required|max:255',
-        //     'category' => 'required',
+        //NOTE: Validations are in StoreCourseRequest
+
+        //create and save course example for few data
+        // $course = Course::create([
+        //     'name' => $request->name,
+        //     'description' => $request->description,
+        //     'category' => $request->category
         // ]);
 
-        $course = new Course();
-
-        $course->name = $request->name;
-        $course->description = $request->description;
-        $course->category = $request->category;
-
-        $course->save();
+        //create and save course example for many data
+        $course = Course::create($request->all());
 
         return redirect()->route('courses.show', $course->id);
     }
@@ -65,18 +62,17 @@ class CourseController extends Controller
     public function update(Request $request, Course $course)
     {
 
+        //Example for validate with Request class
+        //other forms of validation are in the request folder
+        //and change Request for name of the created request
+        //show store method for application example
         $request->validate([
             'name' => 'required',
             'description' => 'required',
             'category' => 'required',
         ]);
 
-
-        $course->name = $request->name;
-        $course->description = $request->description;
-        $course->category = $request->category;
-
-        $course->save();
+        $course->update($request->all());
 
         return redirect()->route('courses.show', $course->id);
     }
