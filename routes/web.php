@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
 
+use App\Mail\ContactUsMailable;
+use Illuminate\Support\Facades\Mail;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,3 +30,11 @@ Route::resource('courses', CourseController::class);
 //Route::resource('videos', CourseController::class)->parameters(['videos' => 'course'])->names('courses');
 
 Route::view('about_us', 'about_us')->name('about-us');
+
+Route::get('contact-us', function () {
+  $email = new ContactUsMailable();
+
+  Mail::to('berv2820@gmail.com')->send($email);
+
+  return 'Mansaje enviado';
+});
