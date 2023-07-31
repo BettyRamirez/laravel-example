@@ -19,9 +19,11 @@ use App\Http\Controllers\CourseController;
 //     return view('welcome');
 // });
 
-Route::get('/', HomeController::class);
+Route::get('/', HomeController::class)->name('home');
 
 Route::resource('courses', CourseController::class);
 
 //example with resource change url name
 //Route::resource('videos', CourseController::class)->parameters(['videos' => 'course'])->names('courses');
+
+Route::view('about_us', 'about_us')->name('about-us');

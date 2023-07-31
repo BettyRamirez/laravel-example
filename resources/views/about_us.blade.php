@@ -1,9 +1,9 @@
 @extends('layouts.template')
 
-@section('title', 'Index course')
+@section('title', 'about us')
 
 @section('content')
-    <h1>pagina principal</h1>
 
+    <h1>Nosotros</h1>
 
 @endsection
