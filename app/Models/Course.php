@@ -21,4 +21,14 @@ class Course extends Model
     //if we don't want to protect but also don't want to 
     //add all the field in fillable
     //protected $guarded = [];
+
+    /**
+     * Get the route key for the model.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

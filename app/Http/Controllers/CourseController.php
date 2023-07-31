@@ -44,13 +44,8 @@ class CourseController extends Controller
         return redirect()->route('courses.show', $course->id);
     }
 
-    public function show($id)
+    public function show(Course $course)
     {
-        //compact('course') = ['course' => $course]
-        //whit show(Course $course) === $course-> (and next line is unnecessary)
-        //example is used for update method in this page
-        $course = Course::find($id);
-
         return view('courses.show', compact('course'));
     }
 
