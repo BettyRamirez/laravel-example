@@ -21,18 +21,7 @@ use App\Http\Controllers\CourseController;
 
 Route::get('/', HomeController::class);
 
-//Example without group
-// Route::get('/course', [CourseController::class, 'index']);
-// Route::get('/course/create', [CourseController::class, 'create']);
-// Route::get('/course/{courseName}', [CourseController::class, 'show']);
+Route::resource('courses', CourseController::class);
 
-//Example with group
-Route::controller(CourseController::class)->group(function () {
-    Route::get('/courses',  'index')->name('courses.index');
-    Route::get('/courses/create',  'create')->name('courses.create');
-    Route::post('/courses',  'store')->name('courses.store');
-    Route::get('/courses/{id}',  'show')->name('courses.show');
-    Route::get('/courses/{course}/edit',  'edit')->name('courses.edit');
-    Route::put('/courses/{course}',  'update')->name('courses.update');
-    Route::delete('/courses/{course}',  'destroy')->name('courses.destroy');
-});;
+//example with resource change url name
+//Route::resource('videos', CourseController::class)->parameters(['videos' => 'course'])->names('courses');
