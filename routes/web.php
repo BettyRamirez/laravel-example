@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ContactUsController;
 
 use App\Mail\ContactUsMailable;
 use Illuminate\Support\Facades\Mail;
@@ -31,10 +32,5 @@ Route::resource('courses', CourseController::class);
 
 Route::view('about_us', 'about_us')->name('about-us');
 
-Route::get('contact-us', function () {
-  $email = new ContactUsMailable();
-
-  Mail::to('berv2820@gmail.com')->send($email);
-
-  return 'Mansaje enviado';
-});
+Route::get('contact-us', [ContactUsController::class, 'index'])->name('contact_us.index');
+Route::post('contact-us', [ContactUsController::class, 'store'])->name('contact_us.store');
